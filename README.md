@@ -23,7 +23,7 @@ To run this project, you will need:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/BriceZemba/Face-Recognition.git)
    ```
 2. Navigate to the project directory:
    ```bash
