@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance Faciale</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        label:hover {
+            background-color: #0056b3;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        img {
+            max-width: 80%;
+            margin: 20px 0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .known {
+            color: green;
+        }
+        .unknown {
+            color: red;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reconnaissance Faciale</h1>
+    <form action="/reconnaissance_image" method="post" enctype="multipart/form-data" id="upload-form">
+        <label for="file-input">Choisir une photo</label>
+        <input type="file" name="file" id="file-input" accept=".jpg, .jpeg, .png" required>
+        <button type="submit" id="submit-button">Effectuer la reconnaissance</button>
+    </form>
+
+    {% if file_url %}
+        <h2>Reconnaissance faciale :</h2>
+        <img src="{{ file_url }}" alt="Image reconnue avec des rectangles autour des visages">
+    {% endif %}
+
+    {% if resultats %}
+        <h2>Résultats :</h2>
+        <ul>
+            {% for resultat in resultats %}
+                <li class="result {% if resultat == 'Inconnu' %}unknown{% else %}known{% endif %}">
+                    {{ resultat }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- <script>
+        const fileInput = document.getElementById('file-input');
+        const submitButton = document.getElementById('submit-button');
+
+        // Faire disparaître le bouton "Charger la photo" après la sélection d'une image
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                submitButton.style.display = 'none';
+            }
+        });
+    </script> -->
+</body>
+</html>
