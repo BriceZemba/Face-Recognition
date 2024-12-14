@@ -59,11 +59,3 @@ Contributions are welcome! Feel free to fork the repository and submit a pull re
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-## Contact
-For questions or feedback, please contact:
-- **Email**: [Your Email Address]
-- **GitHub**: [Your GitHub Profile]
-
----
-Thank you for exploring the Face Recognition Project!
-
